@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{% block titre %}{{ produit.nom }}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" type="image/x-icon" href="{{ asset('images/logo-5.png') }}" />
+{% block stylesheets %}
+<link href="{{ asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{ asset('css/style.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{ asset('css/style2.css')}}" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ asset('css/etalage.css')}}">
+{% endblock %}
+
+{% block javascripts %}
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="text/javascript" src="{{ asset('js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{ asset('js/responsiveslides.min.js')}}"></script>
+<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+        auto: true,
+        nav: true,
+        speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+</script>
+<script type="text/javascript" src="{{ asset('js/hover_pack.js')}}"></script>
+<script type="text/javascript" src="{{ asset('js/nav.js')}}"></script>
+ <script type="text/javascript">
+      $(function() {
+          var menu_ul = $('.menu > li > ul'),
+                 menu_a  = $('.menu > li > a');
+          menu_ul.hide();
+          menu_a.click(function(e) {
+              e.preventDefault();
+              if(!$(this).hasClass('active')) {
+                  menu_a.removeClass('active');
+                  menu_ul.filter(':visible').slideUp('normal');
+                  $(this).addClass('active').next().stop(true,true).slideDown('normal');
+              } else {
+                  $(this).removeClass('active');
+                  $(this).next().stop(true,true).slideUp('normal');
+              }
+          });
+      
+      });
+    </script>
+<script type="text/javascript" src="{{ asset('js/jquery-1.11.1.min.js')}}"></script>
+<script type="text/javascript" src="{{ asset('js/hover_pack.js')}}"></script>
+<script src="{{ asset('js/jquery.etalage.min.js')}}"></script>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script>
+      jQuery(document).ready(function($){
+
+        $('#etalage').etalage({
+          thumb_image_width: 300,
+          thumb_image_height: 400,
+          source_image_width: 900,
+          source_image_height: 1200,
+          show_hint: true,
+          click_callback: function(image_anchor, instance_id){
+            alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+          }
+        });
+
+      });
+    </script>
+<script src="{{ asset('js/easyResponsiveTabs.js')}}" type="text/javascript"></script>
+        <script type="text/javascript">
+          $(document).ready(function () {
+              $('#horizontalTab').easyResponsiveTabs({
+                  type: 'default', //Types: default, vertical, accordion           
+                  width: 'auto', //auto or any width like 600px
+                  fit: true   // 100% fit in a container
+              });
+          });
+            </script> 
+            <script type="text/javascript" src="{{ asset('js/nav.js')}}"></script>
+             <script type="text/javascript">
+      $(function() {
+          var menu_ul = $('.menu > li > ul'),
+                 menu_a  = $('.menu > li > a');
+          menu_ul.hide();
+          menu_a.click(function(e) {
+              e.preventDefault();
+              if(!$(this).hasClass('active')) {
+                  menu_a.removeClass('active');
+                  menu_ul.filter(':visible').slideUp('normal');
+                  $(this).addClass('active').next().stop(true,true).slideDown('normal');
+              } else {
+                  $(this).removeClass('active');
+                  $(this).next().stop(true,true).slideUp('normal');
+              }
+          });
+      
+      });
+    </script>
+{% endblock %}
+</head>
+<body>
+  {% block body %}
+<div class="header">
+  <div class="header_top">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html"><img src="{{ asset('images/logo-9.png')}}" alt=""/></a>
+      </div>
+      <ul class="shopping_grid">
+        <ul class="shopping_grid">
+             <a>
+              <li>
+                   <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
+        <div>
+            {% block fos_user_content %}
+            
+                {% if app.request.hasPreviousSession %}
+                    {% for type, messages in app.session.flashbag.all() %}
+                        {% for message in messages %}
+                            <div class="flash-{{ type }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            {% endblock fos_user_content %}
+        </div>
+
+            </li></a>
+            {% render(controller('EcommerceBundle:Panier:menu')) %}
+            <div class="clearfix"> </div>
+      </ul>
+        <div class="clearfix"> </div>
+    </div>
+  </div>
+  <div class="h_menu4">
+    <div class="container">
+        <a class="toggleMenu" href="#">Menu</a>
+        <ul class="nav">
+          <li class="active"><a href="{{ path('homepage')}}" data-hover="Home">Home</a></li>
+          <li><a href="{{ path('contact')}}" data-hover="contact us">Contact Us</a></li>
+           <li><a href="{{ path('fos_user_profile_show')}}" data-hover="Mon compte">Mon compte</a></li>
+          <li><a href="{{ path('wishlist')}}" data-hover="Ma wishlist">Ma wishlist</a></li>
+        
+         </ul>
+         
+        </div>
+     </div>
+</div>
+
+
+<div class="main">
+  <div class="content_top">
+    <div class="container">
+     <div class="col-md-3 sidebar_box">
+       <div class="sidebar">
+      <div class="menu_box">
+        <h3 class="menu_head">Catégories</h3>
+        <ul class="menu">
+          {% render(controller('EcommerceBundle:categorie:index')) %}
+        </ul>
+    </div>
+       
+   
+       </div>
+        <div class="delivery">
+        
+      </div>
+      <div class="twitter">
+        
+      </div>
+      <div class="clients">
+       
+      </div>
+     </div> 
+        <!--initiate accordion-->
+   
+       
+     <div class="col-md-9 single_right">
+      <div class="single_top">
+         <div class="single_grid">
+        <div class="grid images_3_of_2">
+            <ul id="etalage">
+              <li>
+                <a href="optionallink.html">
+                  <img class="etalage_thumb_image" src="{{ asset('upload/bundles/images/' ~ produit.media.Image) }}" class="img-responsive" />
+                  <img class="etalage_source_image" src="{{ asset('upload/bundles/images/' ~ produit.media.Image) }}" class="img-responsive" title="" />
+                </a>
+              </li>
+          
+            </ul>
+             <div class="clearfix"></div>   
+          </div> 
+          <div class="desc1 span_3_of_2">
+            <h1>{{ produit.nom }} </h1>
+        <p class="availability">le prix :<span class="color"></span></p>
+          <div class="price_single">
+{% if produit.prixpromotion == 0 %}
+          <span class="actual">{{ produit.prixHt|tva(produit.tva.multiplicate) }} DH</span><a href="#"></a>
+{%endif%}
+{% if produit.prixpromotion != 0 %}
+          <span class="reducedfrom">{{ produit.prixHt|tva(produit.tva.multiplicate) }} DH</span>
+          <span class="actual">{{ produit.prixpromotion|tva(produit.tva.multiplicate) }} DH</span><a href="#"></a>
+{%endif%}
+        </div>
+        <h2 class="quick">Descreption:</h2>
+        <p class="quick_desc">{{ produit.description }}</p>
+          <div class="wish-list">
+          <ul>
+            <li class="wish"><a href="{{ path('wishlist_ajouter', { 'id' : produit.id })}}">Ajouter à la  Wishlist</a></li>
+              
+          </ul>
+         </div>
+        
+        <div class="quantity_box">
+          <ul class="product-qty">
+          {% if panier[produit.id] is not defined %}
+             <form action="{{ path('ajouterpanier', { 'id' : produit.id }) }}" method="GET">
+            
+             <span>Quantity:</span>
+
+              <select name="qte" class="span1">
+                                {% for i in 1..10 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+            </ul>
+            </ul>
+               <div class="clearfix"></div>
+            </div>
+           <button class="btn btn-primary">Ajouter au panier</button>
+          </form>
+           {% else %}
+            <a href="{{ path('afficherpanier') }}" class="btn btn-primary">Le produit est déjà dans votre panier</a>
+          {% endif %}
+             
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+                <div class="clearfix"></div>
+          </div>
+          </div></div></div></div>
+
+<div class="footer_bg">
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3 f_grid1">
+      <h3>About</h3>
+      <a href="#"><img src="{{ asset('images/logo-2.png')}}" alt=""/></a>
+      
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Follow Us</h3>
+      <ul class="social">
+        <li><a href=""> <i class="fb"> </i><p class="m_3">Facebook</p><div class="clearfix"> </div></a></li>
+          <li><a href=""><i class="tw"> </i><p class="m_3">Twittter</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="google"> </i><p class="m_3">Google</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="instagram"> </i><p class="m_3">Instagram</p><div class="clearfix"> </div></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Contact Info</h3>
+      <ul class="list">
+        <li><p>Phone : {{ telephone }}</p></li>
+        <li><p>Fax : {{ adresse }}</p></li>
+        <li><p>Email : <a href="mailto:electrohl.shop@gmail.com"> {{ email }}</a></p></li>
+      </ul>
+      <ul class="list1">
+        <li></li>
+      </ul>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<div class="footer_bottom">
+        <div class="container">
+          <div class="cssmenu">
+      
+      </div>
+      <div class="copy">
+          <p> 2017 Creer par <a href="" target="_blank">Hibatou Allah & Laila </a></p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+</div>
+
+{% endblock %}
+</body>
+</html>   

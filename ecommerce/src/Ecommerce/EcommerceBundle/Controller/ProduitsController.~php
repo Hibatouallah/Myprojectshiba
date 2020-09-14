@@ -1,0 +1,41 @@
+<?php
+
+namespace Ecommerce\EcommerceBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class ProduitsController extends Controller
+{
+    public function homeAction()
+    {
+        return $this->render('EcommerceBundle:Default:home.html.twig');
+    }
+    public function shopAction()
+    {
+        return $this->render('EcommerceBundle:Default:shop.html.twig');
+    }
+    public function productdetailsAction()
+    {
+        return $this->render('EcommerceBundle:Default:productdetails.html.twig');
+    }
+    public function checkoutAction()
+    {
+        return $this->render('EcommerceBundle:Default:checkout.html.twig');
+    }
+    public function cartAction()
+    {
+        return $this->render('EcommerceBundle:Default:cart.html.twig');
+    }
+     public function loginAction()
+    {
+        return $this->render('EcommerceBundle:Default:login.html.twig');
+    }
+     public function contactAction()
+    {
+        return $this->render('EcommerceBundle:Default:contact.html.twig');
+    }
+     public function ProfileAction()
+    {
+        return $this->render('EcommerceBundle:Default:profile.html.twig');
+    }
+}

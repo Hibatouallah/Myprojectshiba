@@ -1,0 +1,6 @@
+  ul ul {display: none; position: absolute; left: 270px; top: -1px; margin:0px; padding: 0px; border: 1px solid #B0B0B0;}
+  .soucat {list-style-type: none; position: relative; width: 270px; background-color: #E0E0E0; padding: 2px; margin: 0px;}
+
+    li:hover, li.sfhover {background-color: #FFFF70;}
+    li:hover ul.niveau2, li li:hover ul.niveau3, li.sfhover ul.niveau2, li li.sfhover ul.niveau3 {display: block}
+    li.plus {background-position:right; background-image: url(illustrations/fdroite.gif); background-repeat: no-repeat; border-bottom: 1px solid #B0B0B0;}

@@ -1,0 +1,13 @@
+
+{% block body -%}
+    <h1>utilisateursadresses edit</h1>
+
+ <div class="col-md-6 login-right">
+                      <h4>Ajouter une nouvelle adresse</h4>
+                        <form action="{{ path('gestionutilisateursadresse_update',{ 'id': entity.id }') }}" method="POST">
+                            {{ form_widget(form) }}
+                            <button class="btn btn-primary" type="submit">Modifier</button>
+                        </form>
+                    </div><!--/login form-->
+
+ {% endblock %}                   

@@ -1,0 +1,254 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+    app.path.product_images: /uploads/images/products
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+    use_listener: false
+    from_email:
+        address:        electrohl.shop@gmail.com
+        sender_name:    electrohl
+    registration:
+        confirmation:
+             enabled:   true
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport:  "%mailer_transport%"
+    encryption: "%mailer_encryption%"
+    host:       "%mailer_host%"
+    username:   "%mailer_user%"
+    password:   "%mailer_password%"
+    spool:      { type: memory }
+vich_uploader:
+    db_driver: orm
+    mappings:
+        product_images:
+            uri_prefix:         %app.path.product_images%
+            upload_destination: %kernel.root_dir%/../web/uploads/images/products  
+easy_admin:
+    site_name: '<strong>Administration</strong>'
+    formats:
+         date: 'd/m/Y'
+         time: 'h:i A e'
+         datetime: 'd/m/Y h:i A e'
+    list:
+        actions:
+            - { name: 'show', icon: 'search', label: false }
+            - { name: 'edit', icon: 'pencil', label: false }
+            - { name: 'delete' , icon: 'trash', label: false }
+    entities:
+        Utilisateur:
+            class: Utilisateurs\UtilisateursBundle\Entity\Utilisateurs
+            label: 'Utilisateurs'
+            list:
+                title: "Vos Clients"
+                fields: ['id', 'userName', 'email','last_login','roles', 'enabled']
+        Produit:
+            class: Ecommerce\EcommerceBundle\Entity\produits
+            label: 'Produits'
+            list:
+                title: "Les produits" 
+                fields:
+                    - { property: 'id'}
+                    - { property: 'nom'}
+                    - { property: 'media.image', label: 'photo', type: 'image', base_path: %app.path.product_images% }    
+                    - { property: 'marque'} 
+                    - { property: 'sub_categorie', label: 'Sous categorie'}    
+            form:
+                title: "Ajouter un Produit " 
+                fields:
+                    - { property: 'nom' , label: 'Nom du produit'}
+                    - { property: 'description' , label: 'Description'}
+                    - { property: 'prix_ht' ,label: 'Prix HT' }
+                    - { property: 'media' }
+                    - { property: 'sub_categorie' }
+                    - { property: 'marque' }
+                    - { property: 'tva' }
+                    - { property: 'prixpromotion' }
+                          
+        Categorie:
+            class: Ecommerce\EcommerceBundle\Entity\categorie
+            label: 'Categories'
+            list:
+                title: "Catégories des produits"
+                fields:
+                    - { property: 'id'}
+                    - { property: 'libele'}
+                       
+                         
+        SubCategorie:
+            class: Ecommerce\EcommerceBundle\Entity\sub_categorie
+            label: 'Sous-Catégories'
+            list:
+                title: "Sous Catégories des produits"
+                fields:
+                - { property: 'id'}
+                - { property: 'nom'}
+                - { property: 'idcategorie',label: 'categorie'} 
+        Photo:
+            class: Ecommerce\EcommerceBundle\Entity\media
+            label: 'Medias'
+            list:
+                title: "Les photos " 
+                fields:
+                    - { property: 'id'}
+                    - { property: 'nom'}
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }    
+            form:
+                title: "Ajouter une nouvelle photo " 
+                fields:
+                    - { property: 'nom'}
+                    - { property: 'imageFile', type: 'vich_image' }        
+            show:
+                fields:
+                    - { property: 'nom'}
+                    - { property: 'image', type: 'image', base_path: %app.path.product_images% }
+        Marque:
+            class: Ecommerce\EcommerceBundle\Entity\marque
+            label: 'Marques'
+            list:
+                title: "Les marques"
+                fields:
+                    - { property: 'nom'}
+                    - { property: 'media.image', label: 'photo', type: 'image', base_path: %app.path.product_images% }
+
+        Promotion:
+            class: Ecommerce\EcommerceBundle\Entity\promotion
+            label: 'Promotions'
+            disabled_actions: ['edit']
+            list:
+                title: "Les Promotions"
+        Commande:
+            class: Ecommerce\EcommerceBundle\Entity\Commandes
+            label: 'Commandes'
+            disabled_actions: ['new','edit','delete']
+            list:
+                title: "Les commandes"
+        
+        
+    design:
+        form_theme: 'vertical'
+        assets:
+            css:
+                # HTTP protocol-relative URL
+                - '//example.org/css/admin1.css'
+                # absolute non-secure URL
+                - 'http://example.org/css/admin2.css'
+                # absolute secure URL
+                - 'https://example.org/css/admin3.css'
+                # absolute internal bundle URL
+                - '/bundles/user/css/admin4.css'
+                # relative internal bundle URL
+                - 'bundles/app/css/admin5.css'
+            js:
+                # this option works exactly the same as the 'css' option
+                - '//example.org/js/admin1.js'
+                - 'http://example.org/js/admin2.js'
+                - 'https://example.org/js/admin3.js'
+                - '/bundles/user/js/admin4.js'
+                - 'bundles/app/js/admin5.js'
+    # ...
+        menu: 
+            - label: 'Menu Produit'
+              icon: 'shopping-basket'   
+              children:
+                - { entity: 'Produit', icon: 'th-list', label: 'Produits' }
+                - { entity: 'Categorie', icon: 'tags', label: 'Categories' }
+                - { entity: 'SubCategorie', icon: 'tags', label: 'Sous-Catégorie' }
+                - { entity: 'Marque', icon: 'tags', label: 'Marques' }
+                - { entity: 'Promotion', icon: 'tags', label: 'Promotions' }
+                - { entity: 'Photo', icon: 'tags', label: 'Photos' }
+            - { label: 'Clients', entity: 'Utilisateur', icon: 'users' }
+            - { label: 'Commande', entity: 'Commande', icon: 'credit-card'}
+            - { label: 'About' }
+            - { label: 'Home', url: 'https://github.com/javiereguiluz/EasyAdminBundle', icon: 'home', target: '_blank' }
+            - { label: 'Messagerie', url: 'https://github.com/javiereguiluz/EasyAdminBundle#getting-started-guide', icon: 'book', target: '_blank' }
+        brand_color: '#A52A2A'
+        color_scheme: 'light'
+vich_uploader:
+    db_driver: orm
+    mappings:
+        product_images:
+            uri_prefix:         %app.path.product_images%
+            upload_destination: %kernel.root_dir%/../web/uploads/images/products            
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: 'KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig'     # sliding pagination controls template
+        sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig' # sort link template

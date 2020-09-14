@@ -1,0 +1,71 @@
+{% include 'EcommerceBundle:Default:/index.html.twig' %}
+
+{% block body %}
+
+<div class="about">
+  <div class="container">
+  <h1>Ajouter une adresse</h1>
+            <br />
+         <div class="register">
+               <div class="col-md-6 login-center">
+
+					    {{ form(form) }}
+					    <br/><br/>
+					    <ul class="record_actions">
+						    <li>
+						    
+						         <button class="btn btn-primary"> <a href="{{ path('utilisateursadresses') }}">retour  </a></button>   
+						      
+						    </li>
+				        </ul>
+                    </div>
+                 </div>
+                       <div class="clearfix"> </div>
+        </div>
+    </div>
+
+<div class="footer_bg">
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3 f_grid1">
+      <h3>About</h3>
+      <a href="#"><img src="{{ asset('images/logo-2.png')}}" alt=""/></a>
+      
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Follow Us</h3>
+      <ul class="social">
+        <li><a href=""> <i class="fb"> </i><p class="m_3">Facebook</p><div class="clearfix"> </div></a></li>
+          <li><a href=""><i class="tw"> </i><p class="m_3">Twittter</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="google"> </i><p class="m_3">Google</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="instagram"> </i><p class="m_3">Instagram</p><div class="clearfix"> </div></a></li>
+      </ul>
+    </div>
+    <div class="col-md-6 f_grid3">
+      <h3>Contact Info</h3>
+      <ul class="list">
+        <li><p>Phone : {{ telephone }}</p></li>
+        <li><p>Fax : {{ adresse }}</p></li>
+        <li><p>Email : <a href="mailto:electrohl.shop@gmail.com"> {{ email }}</a></p></li>
+      </ul>
+      <ul class="list1">
+        <li></li>
+      </ul>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<div class="footer_bottom">
+        <div class="container">
+          <div class="cssmenu">
+      
+      </div>
+      <div class="copy">
+          <p> 2017 Creer par <a href="" target="_blank">Hibatou Allah & Laila </a></p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+</div>
+
+{% endblock %}

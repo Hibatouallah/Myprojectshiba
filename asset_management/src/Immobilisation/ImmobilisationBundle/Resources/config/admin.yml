@@ -1,0 +1,145 @@
+services:
+
+    app.admin.Commande:
+        class: Immobilisation\ImmobilisationBundle\Admin\CommandeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Commande" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Commande
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Ammortissements:
+        class: Immobilisation\ImmobilisationBundle\Admin\AmmortissementsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Ammortissement", label: "Ammortissements" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Ammortissements
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Bureau:
+        class: Immobilisation\ImmobilisationBundle\Admin\BureauAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Bureau" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Bureau
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.devision:
+        class: Immobilisation\ImmobilisationBundle\Admin\devisionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Dévision" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\devision
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Famille:
+        class: Immobilisation\ImmobilisationBundle\Admin\FamilleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Famille" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Famille
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Fournisseur:
+        class: Immobilisation\ImmobilisationBundle\Admin\FournisseurAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Fournisseur" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Fournisseur
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Immobilisation:
+        class: Immobilisation\ImmobilisationBundle\Admin\ImmobilisationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Immobilisation" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Immobilisation
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Marque:
+        class: Immobilisation\ImmobilisationBundle\Admin\MarqueAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Marque" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Marque
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+
+    app.admin.Media:
+        class: Immobilisation\ImmobilisationBundle\Admin\MediaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Media" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Media
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Services:
+        class: Immobilisation\ImmobilisationBundle\Admin\ServicesAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Services" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Services
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+
+    app.admin.Site:
+        class: Immobilisation\ImmobilisationBundle\Admin\SiteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Sites" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Site
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+
+    app.admin.Sousfamille:
+        class: Immobilisation\ImmobilisationBundle\Admin\SousfamilleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Sous famille" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\Sousfamille
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.Utilisateurimmo:
+        class: Immobilisation\ImmobilisationBundle\Admin\UtilisateurimmoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "Utilisateur Immobilisation" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\utilisateurimmo
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]
+    app.admin.TVAAdmin:
+        class: Immobilisation\ImmobilisationBundle\Admin\TVAAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immobilisation", label: "TVA" }
+        arguments:
+            - ~
+            - Immobilisation\ImmobilisationBundle\Entity\TVA
+            - ~
+        calls:
+            - [ setTranslationDomain, [ImmobilisationImmobilisationBundle]]

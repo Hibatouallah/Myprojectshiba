@@ -1,0 +1,13 @@
+<!-- src/AppBundle/Resources/config/services.xml -->
+
+<!-- <service id="security.acl.user_permission.map" class="AppBundle\Security\Acl\Permission\UserAdminPermissionMap" public="false"></service> -->
+
+<service id="security.acl.voter.user_permissions" class="AppBundle\Security\Authorization\Voter\UserAclVoter" public="false">
+    <tag name="monolog.logger" channel="security" />
+    <argument type="service" id="security.acl.provider" />
+    <argument type="service" id="security.acl.object_identity_retrieval_strategy" />
+    <argument type="service" id="security.acl.security_identity_retrieval_strategy" />
+    <argument type="service" id="security.acl.permission.map" />
+    <argument type="service" id="logger" on-invalid="null" />
+    <tag name="security.voter" priority="255" />
+</service>

@@ -1,0 +1,38 @@
+gestionproduits_afficher:
+    path:     /{sub_categorie}/afficher
+    defaults: { _controller: "EcommerceBundle:Produits:index" }
+
+gestionproduits_afficherbymarque:
+    path:     /{marque}/afficherproduit
+    defaults: { _controller: "EcommerceBundle:Produits:produitsbymarque" }
+
+gestionproduits_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:Produits:show" }
+
+gestionproduits_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:Produits:new" }
+
+gestionproduits_create:
+    path:     /create
+    defaults: { _controller: "EcommerceBundle:Produits:create" }
+    methods:  POST
+
+gestionproduits_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Produits:edit" }
+
+gestionproduits_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:Produits:update" }
+    methods:  [POST, PUT]
+
+gestionproduits_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:Produits:delete" }
+    methods:  [POST, DELETE]
+    
+rechercheProduits:
+    pattern:  /recherche
+    defaults: { _controller: EcommerceBundle:Produits:rechercheTraitement }

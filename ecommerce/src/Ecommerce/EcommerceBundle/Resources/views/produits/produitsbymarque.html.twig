@@ -1,0 +1,129 @@
+{% include 'EcommerceBundle:Default:/index.html.twig' %}
+
+<div class="column_center">
+  <div class="container">
+  <div class="search">
+    {% render(controller('EcommerceBundle:Produits:recherche')) %}
+    </div>
+    <div class="clearfix"> </div>
+  </div>
+    <div class="clearfix"> </div>
+  </div>
+</div>
+<div class="main">
+  <div class="content_top">
+    <div class="container">
+     <div class="col-md-3 sidebar_box">
+       <div class="sidebar">
+      <div class="menu_box">
+        <h3 class="menu_head">Catégories</h3>
+        <ul class="menu">
+          {% render(controller('EcommerceBundle:categorie:index')) %}
+        </ul>
+    </div>
+       
+   
+       </div>
+        <div class="delivery">
+        
+      </div>
+      <div class="twitter">
+        
+      </div>
+      <div class="clients">
+      
+      </div>
+     </div> 
+     
+
+     <div class="col-md-9 content_right">
+      <div class="top_grid1">
+       
+         <h4 class="head"><span class="m_2">All</span> Products </h4>
+      {% for produit in produit %}
+       <div class="col-md-4 box_2">
+        <div class="grid_1"><a href="{{ path('gestionproduits_show', { 'id': produit.id }) }}">
+          <div class="b-link-stroke b-animate-go  thickbox">
+            <img src="{{ asset('upload/bundles/images/' ~ produit.media.Image) }}" width='300' height='150' class="img-responsive" alt=""/></div>
+           <div class="grid_2">
+            <p><a href="{{ path('gestionproduits_show', { 'id': produit.id }) }}">{{ produit.nom }}</a></p>
+            <ul class="grid_2-bottom">
+          
+                               {% if produit.prixpromotion == 0 %}
+          <p>{{ produit.prixHt|tva(produit.tva.multiplicate) }} DH</p>
+         {%endif%}
+         {% if produit.prixpromotion != 0 %}
+          <p>{{ produit.prixpromotion|tva(produit.tva.multiplicate) }} DH</p>
+         {%endif%}
+         
+                                <a class="btn btn-primary" href="{{  path('gestionproduits_show', { 'id': produit.id }) }}">infos</a>
+                                {% if panier[produit.id] is not defined %}
+                                    <a class="btn btn-success" width='100' height='100' href="{{ path('ajouterpanier', { 'id': produit.id }) }}">Acheter</a>
+                                {% endif %}
+                            
+            </ul>
+
+           </div>
+        </div>
+       </a></div>
+        {% endfor %}
+       
+       
+       
+       
+      
+       <div class="clearfix"> </div>
+      </div> 
+       </div>
+    </div>        
+  </div>
+</div><br/><br/><br/><br/>
+<div class="navigation text-center">
+                    {{ knp_pagination_render(produit) }}
+
+                </div>
+<div class="footer_bg">
+</div>
+<div class="footer_bg">
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3 f_grid1">
+      <h3>About</h3>
+      <a href="#"><img src="{{ asset('images/logo-2.png')}}" alt=""/></a>
+      
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Follow Us</h3>
+      <ul class="social">
+        <li><a href=""> <i class="fb"> </i><p class="m_3">Facebook</p><div class="clearfix"> </div></a></li>
+          <li><a href=""><i class="tw"> </i><p class="m_3">Twittter</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="google"> </i><p class="m_3">Google</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="instagram"> </i><p class="m_3">Instagram</p><div class="clearfix"> </div></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Contact Info</h3>
+      <ul class="list">
+        <li><p>Phone : {{ telephone }}</p></li>
+        <li><p>Fax : {{ adresse }}</p></li>
+        <li><p>Email : <a href="mailto:electrohl.shop@gmail.com"> {{ email }}</a></p></li>
+      </ul>
+      <ul class="list1">
+        <li></li>
+      </ul>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<div class="footer_bottom">
+        <div class="container">
+          <div class="cssmenu">
+      
+      </div>
+      <div class="copy">
+          <p> 2017 Creer par <a href="" target="_blank">Hibatou Allah & Laila </a></p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+</div>

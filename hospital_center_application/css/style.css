@@ -1,0 +1,15 @@
+	
+		form
+		{
+			
+			position: relative;
+			padding: 100px 450px;
+			font-family: monospace;
+		}
+		fieldset
+		{
+			background-color: #ecf8ca;
+		}
+		table.test { border-collapse: collapse; }
+        tr.separated td { border-bottom: 1px solid gray;
+                           width: 10% }

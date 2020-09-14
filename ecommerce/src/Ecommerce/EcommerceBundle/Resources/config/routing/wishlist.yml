@@ -1,0 +1,37 @@
+wishlist:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:wishlist:index" }
+
+wishlist_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:wishlist:show" }
+
+wishlist_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:wishlist:new" }
+
+wishlist_create:
+    path:     /create
+    defaults: { _controller: "EcommerceBundle:wishlist:create" }
+    methods:  POST
+
+wishlist_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:wishlist:edit" }
+
+wishlist_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:wishlist:update" }
+    methods:  [POST, PUT]
+
+wishlist_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:wishlist:delete" }
+   
+wishlist_ajouter:
+    path:     /{id}/ajouter
+    defaults: { _controller: "EcommerceBundle:wishlist:ajouter" }
+
+afficherwishlist:
+    pattern:  /afficherwishlist
+    defaults: { _controller: EcommerceBundle:wishlist:afficherwishlist }

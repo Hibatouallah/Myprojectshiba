@@ -1,0 +1,10 @@
+immobilisation_homepage:
+    path:     /
+    defaults: { _controller: ImmobilisationBundle:GestionImmo:home }
+
+homepageuser:
+    path:     /utilisateur
+    defaults: { _controller: ImmobilisationBundle:GestionImmo:UtilisateurPage }
+calculer:
+    path:     /admin/calculer/
+    defaults: { _controller: ImmobilisationBundle:CRUDammo:calculer } 

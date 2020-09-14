@@ -1,0 +1,85 @@
+{% include 'EcommerceBundle:Default:/profil.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %} 
+
+  
+         
+        <div class="col-md-6 login-right">
+        <div class="row">
+              <div class="col-md-8"><h3>Ma wishlist</h3></div>  
+         </div>
+            <form>
+                <table class="table table-striped table-hover">
+                    <thead>
+                         <tr>
+                            
+                            <th>les produits</th>
+                            <th> les prix</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {% if entity|length == 0 %}
+                                <tr>
+                                    <td colspan="4"><center>Ancune wishlist actuellement.</center></td>
+                                </tr>
+                            {% endif %}
+                    {% for entity in entity %}
+                        <tr>
+                           
+                                
+                                <td>{{ entity.produit.nom }}</td>
+                                <td>{{ entity.produit.prixHt }} DH</td>
+                                
+                        </tr>     
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+                
+              <div class="clearfix"> </div>
+      </div> 
+    </div>
+ <div class="footer_bg">
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3 f_grid1">
+      <h3>About</h3>
+      <a href="#"><img src="{{ asset('images/logo-2.png')}}" alt=""/></a>
+      
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Follow Us</h3>
+      <ul class="social">
+        <li><a href=""> <i class="fb"> </i><p class="m_3">Facebook</p><div class="clearfix"> </div></a></li>
+          <li><a href=""><i class="tw"> </i><p class="m_3">Twittter</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="google"> </i><p class="m_3">Google</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="instagram"> </i><p class="m_3">Instagram</p><div class="clearfix"> </div></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Contact Info</h3>
+      <ul class="list">
+        <li><p>Phone : {{ telephone }}</p></li>
+        <li><p>Fax : {{ adresse }}</p></li>
+        <li><p>Email : <a href="mailto:{{ email }}">{{ email }}</a></p></li>
+      </ul>
+      <ul class="list1">
+        <li></li>
+      </ul>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<div class="footer_bottom">
+        <div class="container">
+          <div class="cssmenu">
+      
+      </div>
+      <div class="copy">
+          <p> 2017 Creer par <a href="" target="_blank">Hibatou Allah & Laila </a></p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+</div>

@@ -1,0 +1,127 @@
+{% include 'EcommerceBundle:Default:/index.html.twig' %}
+ 
+{% set totalHT = 0 %}
+{% set totalTTC = 0 %}
+{% set refTva = {} %}
+{% for produit in produit %}
+    {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : 0 }) %}
+{% endfor %}
+
+	<div class="container">
+    <div class="row">
+        <div class="span9">
+            	
+            	 {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+            
+            <h2>Votre parnier</h2>
+            <form>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Références</th>
+                            <th>Quantité</th>
+                            <th>Prix unitaire</th>
+                            <th>Total HT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% if produit|length == 0 %}
+                        <tr>
+                            <td colspan="4"><center>Aucun articles dans votre panier</center></td>
+                        </tr>
+                       {% endif %}
+                    {% for produit in produit %}
+                        <tr>
+                        	<form action="{{ path('ajouterpanier', { 'id' : produit.id }) }}" method="GET" >
+                                <td>{{ produit.nom }}</td>
+                               
+                                <td>
+                                    <select name="qte" class="span1" onChange="this.form.submit()">
+                                        {% for i in 1..10 %}
+                                            <option value="{{ i }}" {% if i == panier[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                        {% endfor %}
+                                    </select>&nbsp; 
+                                </td>
+                                <td>{{ produit.prixHt }} dh</td>
+                                <td>{{ produit.prixHt * panier[produit.id] }} dh</td>
+                                <td>
+                                 <a href="{{ path('supprimerpanier', { 'id' : produit.id }) }}" class="btn btn-success pull-right">Supprimer</a>
+                                 </td>
+                          </form>
+                        </tr>
+                         {% set totalHT = totalHT + (produit.prixHt * panier[produit.id]) %}
+                         {% set totalTTC = totalTTC + (produit.prixHt * panier[produit.id])|tva(produit.tva.multiplicate) %}
+                         {% set refTva = refTva|merge({ ('%' ~ produit.tva.valeur) : refTva['%' ~ produit.tva.valeur] + ( produit.prixHt * panier[produit.id])|montantTva(produit.tva.multiplicate) }) %}
+                    {% endfor %}
+              </table>
+            </form>
+            {% if produit|length != 0 %}
+
+                  <dl class="dl-horizontal pull-right">
+                      <dt>Total HT :</dt>
+                         <dd>{{ totalHT }} DH</dd>
+                      <dt>Total TTC :</dt>
+                          <dd>{{ totalTTC }} DH</dd>
+                      {% for key, tva in refTva %}
+                          <dt>TVA {{ key }} :</dt>
+                          <dd>{{ tva }} DH</dd>
+                      {% endfor %}
+                  </dl>
+                  <div class="clearfix"></div>
+                <a href="{{ path('livraison')}}" class="btn btn-success pull-right">Valider mon panier</a>
+
+            {% endif %}
+
+            <a href="{{ path('homepage')}}" class="btn btn-primary">Continuer mes achats</a>
+        </div>
+    </div>
+</div>
+	<br><br><br>
+
+	<div class="footer_bg">
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3 f_grid1">
+      <h3>About</h3>
+      <a href="#"><img src="{{ asset('images/logo-2.png')}}" alt=""/></a>
+      
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Follow Us</h3>
+      <ul class="social">
+        <li><a href=""> <i class="fb"> </i><p class="m_3">Facebook</p><div class="clearfix"> </div></a></li>
+          <li><a href=""><i class="tw"> </i><p class="m_3">Twittter</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="google"> </i><p class="m_3">Google</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="instagram"> </i><p class="m_3">Instagram</p><div class="clearfix"> </div></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 f_grid3">
+      <h3>Contact Info</h3>
+      <ul class="list">
+        <li><p>Phone : {{ telephone }}</p></li>
+        <li><p>Fax : {{ adresse }}</p></li>
+        <li><p>Email : <a href="mailto:electrohl.shop@gmail.com"> {{ email }}</a></p></li>
+      </ul>
+      <ul class="list1">
+        <li></li>
+      </ul>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<div class="footer_bottom">
+        <div class="container">
+          <div class="cssmenu">
+      
+      </div>
+      <div class="copy">
+          <p> 2017 Creer par <a href="" target="_blank">Hibatou Allah & Laila </a></p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+</div>

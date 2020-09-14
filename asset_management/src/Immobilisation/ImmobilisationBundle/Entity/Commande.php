@@ -1,0 +1,158 @@
+<?php
+
+namespace Immobilisation\ImmobilisationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commande
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Immobilisation\ImmobilisationBundle\Repository\CommandeRepository")
+ */
+class Commande
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Immobilisation\ImmobilisationBundle\Entity\Fournisseur")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $fournisseur;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="objet", type="string", length=255)
+     */
+    private $objet;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datecommande", type="datetime")
+     */
+    private $datecommande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=255)
+     */
+    private $reference;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set objet
+     *
+     * @param string $objet
+     * @return Commande
+     */
+    public function setObjet($objet)
+    {
+        $this->objet = $objet;
+
+        return $this;
+    }
+
+    /**
+     * Get objet
+     *
+     * @return string 
+     */
+    public function getObjet()
+    {
+        return $this->objet;
+    }
+
+    /**
+     * Set datecommande
+     *
+     * @param \DateTime $datecommande
+     * @return Commande
+     */
+    public function setDatecommande($datecommande)
+    {
+        $this->datecommande = $datecommande;
+
+        return $this;
+    }
+
+    /**
+     * Get datecommande
+     *
+     * @return \DateTime 
+     */
+    public function getDatecommande()
+    {
+        return $this->datecommande;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     * @return Commande
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string 
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \Immobilisation\ImmobilisationBundle\Entity\Fournisseur $fournisseur
+     *
+     * @return Commande
+     */
+    public function setFournisseur(\Immobilisation\ImmobilisationBundle\Entity\Fournisseur $fournisseur = null)
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \Immobilisation\ImmobilisationBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
+
+    public function __toString()
+    {
+        return ($this->getReference()) ? : '';
+    }
+}

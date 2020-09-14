@@ -1,0 +1,39 @@
+
+{% include 'EcommerceBundle:Default:/index.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %} 
+<div class="main">
+  <div class="content_top">
+    <div class="container">
+     <div class="col-md-3 sidebar_box">
+       <div class="sidebar">
+      <div class="menu_box">
+        <h3 class="menu_head">Mon Compte</h3><br/>
+        <ul class="menu">
+          <ul><a href="{{ path('fos_user_profile_show') }}"><img class="arrow-img" src="{{ asset('images/f_menu.png')}}" alt=""/>Mes informations Personnelles</a></ul><br/>
+
+           <ul><a href="{{ path('fos_user_profile_edit') }}"><img class="arrow-img" src="{{ asset('images/f_menu.png')}}" alt=""/>Editer mes informations</a></ul><br/>
+
+           <ul><a href="{{ path('fos_user_change_password') }}"><img class="arrow-img" src="{{ asset('images/f_menu.png')}}" alt=""/>Changer mon mot de passe</a></ul><br/>
+           
+          <ul><a href="{{ path('afficheradresse') }}"><img class="arrow-img" src="{{ asset('images/f_menu.png')}}" alt=""/>Carnet Adresse</a></ul><br/>
+          <ul><a href="{{ path('affichercommande') }}"><img class="arrow-img" src="{{ asset('images/f_menu.png')}}" alt=""/>Mes commandes</a></ul><br/>
+          <ul><a href="{{ path('afficherwishlist') }}"><img class="arrow-img" src="{{ asset('images/f_menu.png')}}" alt=""/>Ma wishlist</a></ul><br/>
+          <ul><a href="{{ path('profilafficherfacture') }}"><img class="arrow-img" src="{{ asset('images/f_menu.png')}}" alt=""/>Mes factures</a></ul><br/>
+          
+        </ul>
+    </div>
+       
+   
+       </div>
+        <div class="delivery">
+        
+      </div>
+      <div class="twitter">
+       
+      </div>
+      <div class="clients">
+       
+         
+      </div>
+     </div> 
+     

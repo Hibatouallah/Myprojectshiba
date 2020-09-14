@@ -1,0 +1,35 @@
+utilisateursadresses:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:index" }
+
+utilisateursadresses_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:show" }
+
+utilisateursadresses_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:new" }
+
+utilisateursadresses_create:
+    path:     /create
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:create" }
+    methods:  POST
+
+utilisateursadresses_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:edit" }
+
+utilisateursadresses_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:update" }
+    methods:  [POST, PUT]
+
+utilisateursadresses_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:delete" }
+    methods:  [POST, DELETE]
+
+afficheradresse:
+    path:     /afficheradresse
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:afficheradresse" }
+

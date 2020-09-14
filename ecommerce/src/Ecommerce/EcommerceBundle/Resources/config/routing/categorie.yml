@@ -1,0 +1,30 @@
+gestioncategorie:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:categorie:index" }
+
+gestioncategorie_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:categorie:show" }
+
+gestioncategorie_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:categorie:new" }
+
+gestioncategorie_create:
+    path:     /create
+    defaults: { _controller: "EcommerceBundle:categorie:create" }
+    methods:  POST
+
+gestioncategorie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:categorie:edit" }
+
+gestioncategorie_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:categorie:update" }
+    methods:  [POST, PUT]
+
+gestioncategorie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:categorie:delete" }
+    methods:  [POST, DELETE]

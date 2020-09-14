@@ -1,0 +1,15 @@
+
+
+<table>
+
+{% for marque in marque %}
+
+<tr>
+<td>
+<a href="{{ path('gestionproduits_afficherbymarque', { 'marque': marque.id }) }}" > <img src="{{ asset('upload/bundles/images/' ~ marque.media.Image) }}" width='100' height='100' class="img-responsive" alt=""/> </a>
+   </td>
+        </tr>
+{% endfor %}
+</table>
+        
+   

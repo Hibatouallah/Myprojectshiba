@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- options
+showbuttons : affichage des boutons de commande du diaporama - valeurs : yes / no
+alignbuttons : position des boutons de commande du diaporama - valeurs : top / bottom (en haut ou en bas)
+showtitle : affichage du commentaire associé à chaque photo - valeurs : yes / no
+aligntitles : position de la barre de commentaire - valeurs : top / bottom (en haut ou en bas)
+showrandom : affichage des photos dans un ordre aléatoire - valeurs : yes / no
+randomstart : affichage de la première photo aléatoire - valeurs : yes / no
+timer : temps d'affichage - valeurs : nb de secondes
+transition : type de transition entre les photos
+	valeurs : 
+	fade : fondu enchainé
+	slide : recouvrement par la gauche
+	push : poussé par la gauche
+	pop : poussé par le haut
+	warp : diaphragme
+	blur : affichage progressif
+speed : vitesse de la transition - valeurs : nb de millisecondes
+ -->
+<album
+showbuttons="yes"
+showtitles="yes"
+showrandom="no"
+randomstart="yes"
+timer="3"
+aligntitles="bottom"
+alignbuttons="top"
+transition="fade"
+speed="20">
+	<img src="img/p1.jpg"  /> 
+	<img src="img/p2.jpg"  /> 
+	<img src="img/p3.jpg"  /> 
+	<img src="img/p4.jpg"  />
+	<img src="img/p5.jpg"  />
+	<img src="img/p6.jpg"  />
+	<img src="img/p7.jpg" />
+	<img src="img/p8.jpg"  />
+</album>

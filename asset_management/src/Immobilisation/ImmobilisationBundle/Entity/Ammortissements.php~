@@ -1,0 +1,188 @@
+<?php
+
+namespace Immobilisation\ImmobilisationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ammortissements
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Immobilisation\ImmobilisationBundle\Repository\AmmortissementsRepository")
+ */
+class Ammortissements
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cumulammortnmoins1", type="decimal")
+     */
+    private $cumulammortnmoins1;
+    /**
+     * @ORM\ManyToOne(targetEntity="Immobilisation\ImmobilisationBundle\Entity\Immobilisation")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $immobilisation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cumulammortn", type="decimal")
+     */
+    private $cumulammortn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="baseammort", type="decimal")
+     */
+    private $baseammort;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dotation", type="decimal")
+     */
+    private $dotation;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="annee", type="datetime")
+     */
+    private $annee;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cumulammortnmoins1
+     *
+     * @param string $cumulammortnmoins1
+     * @return Ammortissements
+     */
+    public function setCumulammortnmoins1($cumulammortnmoins1)
+    {
+        $this->cumulammortnmoins1 = $cumulammortnmoins1;
+
+        return $this;
+    }
+
+    /**
+     * Get cumulammortnmoins1
+     *
+     * @return string 
+     */
+    public function getCumulammortnmoins1()
+    {
+        return $this->cumulammortnmoins1;
+    }
+
+    /**
+     * Set cumulammortn
+     *
+     * @param string $cumulammortn
+     * @return Ammortissements
+     */
+    public function setCumulammortn($cumulammortn)
+    {
+        $this->cumulammortn = $cumulammortn;
+
+        return $this;
+    }
+
+    /**
+     * Get cumulammortn
+     *
+     * @return string 
+     */
+    public function getCumulammortn()
+    {
+        return $this->cumulammortn;
+    }
+
+    /**
+     * Set baseammort
+     *
+     * @param string $baseammort
+     * @return Ammortissements
+     */
+    public function setBaseammort($baseammort)
+    {
+        $this->baseammort = $baseammort;
+
+        return $this;
+    }
+
+    /**
+     * Get baseammort
+     *
+     * @return string 
+     */
+    public function getBaseammort()
+    {
+        return $this->baseammort;
+    }
+
+    /**
+     * Set dotation
+     *
+     * @param string $dotation
+     * @return Ammortissements
+     */
+    public function setDotation($dotation)
+    {
+        $this->dotation = $dotation;
+
+        return $this;
+    }
+
+    /**
+     * Get dotation
+     *
+     * @return string 
+     */
+    public function getDotation()
+    {
+        return $this->dotation;
+    }
+
+      /**
+     * Set annee
+     *
+     * @param string $annee
+     * @return Ammortissements
+     */
+    public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+
+    /**
+     * Get annee
+     *
+     * @return string 
+     */
+    public function getAnnee()
+    {
+        return $this->annee;
+    }
+}

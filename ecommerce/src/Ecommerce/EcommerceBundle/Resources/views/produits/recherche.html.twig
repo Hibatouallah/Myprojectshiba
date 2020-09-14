@@ -1,0 +1,12 @@
+{% block stylesheets %}
+<link href="{{ asset('css/bootstrap3.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{ asset('css/style.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{ asset('css/style2.css')}}" rel='stylesheet' type='text/css'>
+<link href="{{ asset('css/font-awesome.css')}}" rel='stylesheet' type='text/css'>
+{% endblock %}
+<form action="{{ path('rechercheProduits') }}" method="POST" class="navbar-form form-search pull-center">
+<h3 class="stay">Chercher Produit</h3>
+    {{ form_widget(form.recherche) }}
+    <input type="submit" value="">
+    {{ form_widget(form) }}
+</form>

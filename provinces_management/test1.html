@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<meta name="description" content="L'apparition de la barre de menu se fait par replie de toute la page. La barre est positionnable sur les 4 cotés de la page" />
+<meta name="Robots" content="all"/>
+<link rel="stylesheet" media="screen" type="text/css" href="../../css/style_pop.css"/>
+<meta name="viewport" content="width=800, user-scalable=no">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/demo.css">
+
+
+
+<meta charset="utf-8"  http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+
+<link rel="stylesheet" type="text/css" href="app1.html" />
+<meta name="description" content="formulaire d'indentification compact et épuré avec bouton validation intégré, idéal pour accès à un compte par exemple" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+
+
+<style type="text/css">
+.voi {
+color:solid-black;
+vertical-align: middle;
+text-align: center;
+display: block;
+ vertical-align: middle; 
+background-size: 1600px 800px;
+background-image:url("6937164-beautiful-summer-wallpaper-hd.jpg")  ;
+
+}
+
+  body {
+color:solid-black;
+vertical-align: middle;
+text-align: center;
+display: block;
+ vertical-align: middle; 
+background-size: 1600px 800px;
+background-image:url("medium_20121119014311384284.jpg")  ;
+
+
+}
+div{
+  background-size: 500px 600px;
+
+}
+
+fieldset{
+  background-image:url("bg.jpg");
+}
+
+ul { 
+list-style-type: none; 
+}
+
+</style>
+
+
+<script src="js/modernizr.custom.63321.js">
+</script>
+
+
+
+</head>
+
+
+
+
+
+
+<div class="meny">
+  <h2>الصفحات</h2>
+  <br>
+  <ul >
+ <li><a href="appli.html">الصفحة الرئيسية</a></li>
+    <li><a href="test1.html">فضاء المقاطعات</a></li>
+    <li><a href="login_admin.php">فضاء المسؤول</a></li>
+  </ul><br>
+</div>
+
+
+<div class="meny-arrow"></div>
+<div class="voi contents" >
+<fieldset class="formulaire" border="0px">
+<div><img class="formulaire" src="idaoutanan.bmp" class="moi"></div>
+  <form class="formulaire" action="4emepage.php" method="post">  
+    <p class="field"><input type="text" name="id"  placeholder="ادخل رقم المقاطعة"><i class="icon-user icon-large"></i></p>
+    <p class="field"><input type="password" name="mot_de_passe" placeholder="ادخل الرقم السري"><i class="icon-lock icon-large"></i></p>
+    <p class="submit"><button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button></p>
+ </form></fieldset>
+<!-- Source : http://tympanus.net/codrops -->
+
+<script src="js/meny.js"></script>
+<script>
+  var meny = Meny.create({
+  menuElement: document.querySelector( '.meny' ),
+  contentsElement: document.querySelector( '.contents' ),
+// [optional] alignement du menu (top/right/bottom/left)
+  position: Meny.getQuery().p || 'top',
+// [optional] hauteur du menu (pour la position top ou bottom)
+  height: 200,
+// [optional] largeur du menu (pour la position left ou right)
+  width: 260,
+// [optional] distance de déclenchement du menu par rapport au menu
+  threshold: 40,
+// [optional] utilisation des mouvement de la souris pour l'ouverture ou la fermeture
+  mouse: true,
+// [optional] utilisation de l'approche
+  touch: true
+  });
+
+  if( Meny.getQuery().u && Meny.getQuery().u.match( /^http/gi ) ) {
+    var contents = document.querySelector( '.contents' );
+    contents.style.padding = '0px';
+    contents.innerHTML = '<div class="cover"></div><iframe src="'+ Meny.getQuery().u +'" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
+  }
+</script>
+
+
+</div>
+
+</body>
+</html>

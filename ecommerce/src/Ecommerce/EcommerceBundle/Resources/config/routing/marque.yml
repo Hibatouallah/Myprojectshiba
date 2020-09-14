@@ -1,0 +1,30 @@
+gestionmarque:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:marque:index" }
+
+gestionmarque_show:
+    path:     /{id}/show
+    defaults: { _controller: "EcommerceBundle:marque:show" }
+
+gestionmarque_new:
+    path:     /new
+    defaults: { _controller: "EcommerceBundle:marque:new" }
+
+gestionmarque_create:
+    path:     /create
+    defaults: { _controller: "EcommerceBundle:marque:create" }
+    methods:  POST
+
+gestionmarque_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:marque:edit" }
+
+gestionmarque_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:marque:update" }
+    methods:  [POST, PUT]
+
+gestionmarque_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EcommerceBundle:marque:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,99 @@
+
+ecommerce_wishlist:
+    resource: "@EcommerceBundle/Resources/config/routing/wishlist.yml"
+    prefix:   /wishlist
+
+ecommerce_utilisateursadresses:
+    resource: "@EcommerceBundle/Resources/config/routing/utilisateursadresses.yml"
+    prefix:   /utilisateursadresses
+
+ecommerce_gestionmarque:
+    resource: "@EcommerceBundle/Resources/config/routing/marque.yml"
+    prefix:   /gestionmarque
+
+ecommerce_gestionproduits:
+    resource: "@EcommerceBundle/Resources/config/routing/produits.yml"
+    prefix:   /gestionproduits
+
+ecommerce_gestionsubcategorie:
+    resource: "@EcommerceBundle/Resources/config/routing/sub_categorie.yml"
+    prefix:   /gestionsubcategorie
+
+ecommerce_gestioncategorie:
+    resource: "@EcommerceBundle/Resources/config/routing/categorie.yml"
+    prefix:   /gestioncategorie
+
+homepage:
+    path:     /
+    defaults: { _controller: EcommerceBundle:home:home }
+
+afficherpanier:
+    pattern:  /afficherpanier
+    defaults: { _controller: EcommerceBundle:Panier:panier }
+
+ajouterpanier:
+    pattern:  /ajouterpanier/{id}
+    defaults: { _controller: EcommerceBundle:Panier:ajouter }
+
+supprimerpanier:
+    pattern:  /supprimer/{id}
+    defaults: { _controller: EcommerceBundle:Panier:supprimer }  
+livraison:
+    pattern:  /livraison
+    defaults: { _controller: EcommerceBundle:Panier:livraison }
+    
+validation:
+    pattern:  /validation
+    defaults: { _controller: EcommerceBundle:Panier:validation }
+
+livraisonAdresseSuppression:
+    pattern:  /livraison/adresse/suppression/{id}
+    defaults: { _controller: EcommerceBundle:Panier:adresseSuppression }
+
+validationCommande:
+    pattern:  /api/banque/{id}
+    defaults: { _controller: EcommerceBundle:Commandes:validationCommande }
+
+affichercommande:
+    pattern:  /affichercommande
+    defaults: { _controller: EcommerceBundle:Commandes:AfficherCommande }
+
+gestionutilisateursadresse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EcommerceBundle:Panier:edit" }
+gestionutilisateursadresse_update:
+    path:     /{id}/update
+    defaults: { _controller: "EcommerceBundle:Panier:update" }
+    methods:  [POST, PUT]
+
+modifieradresse:
+    path:     /{id}/editadresse
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:editadresse" }
+modifieradresse_update:
+    path:     /{id}/updateadresse
+    defaults: { _controller: "EcommerceBundle:utilisateursadresses:updateadresse" }
+    methods:  [POST, PUT]
+
+supprimeradresse:
+    pattern:  /adresse/suppression/{id}
+    defaults: { _controller: EcommerceBundle:utilisateursadresses:supprimeradresse }
+
+afficherfacture:
+    pattern:  /afficherfacture
+    defaults: { _controller: UtilisateursBundle:Utilisateurs:factures }
+
+facturesPDF:
+    pattern: /factures/pdf/{id}
+    defaults: { _controller: UtilisateursBundle:Utilisateurs:facturesPDF }
+
+contact:
+    pattern:  /contact
+    defaults: { _controller: EcommerceBundle:home:contact }    
+
+profilafficherfacture:
+    pattern:  /profilafficherfacture
+    defaults: { _controller: UtilisateursBundle:Utilisateurs:profilafficherfacture }
+
+verificationdemande:
+    pattern:  /verificationdemande
+    defaults: { _controller:  EcommerceBundle:home:Envoyer }

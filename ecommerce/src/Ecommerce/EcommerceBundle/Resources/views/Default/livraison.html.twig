@@ -1,0 +1,96 @@
+{% include 'EcommerceBundle:Default:/index.html.twig' %}
+
+{% block body %}
+
+<div class="about">
+  <div class="container">
+  <h1>Livraison</h1>
+            <br />
+         <div class="register">
+               <div class="col-md-6 login-left">
+
+                   {% if user.adresses|length != 0 %}
+                
+                        <form action="{{ path('validation') }}" method="POST">
+                            
+                            <h4> Votre Adresses</h4>
+                            {% for user in user.adresses %}
+                                <br/><br/>
+                            <label class="radio">
+                                <input type="radio" name="livraison" value="{{ user.id }}" {% if loop.index0 == 0 %}checked="checked"{% endif %}>
+                                {{ user.adresse }}
+                            </label>
+                            <a href="{{ path('gestionutilisateursadresse_edit', { 'id': user.id }) }}" class="btn btn-success pull-left">Modifier</a>
+                            <a href="{{ path('livraisonAdresseSuppression', { 'id' : user.id }) }}" class="btn btn-success pull-left">Spprimer</a>
+                            {% endfor %}
+                            
+                            <br/><br/>
+                             <br/><br/> 
+                            <button class="btn btn-primary">Valider mes adresses</button>
+                          <br/><br/>
+                        </form>
+                       {% endif %}
+                        <br/><br/>
+                     </div>
+                     </div>
+   
+                
+                   <div class="col-md-6 login-right">
+                      <h4>Ajouter une nouvelle adresse</h4>
+                        <form action="{{ path('livraison') }}" method="POST">
+                            {{ form_widget(form) }}
+                            <button class="btn btn-primary" type="submit">Ajouter</button>
+                        </form>
+                    </div><!--/login form-->
+         
+               <div class="clearfix"> </div>
+        </div>
+    </div>
+
+<div class="footer_bg">
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3 f_grid1">
+      <h3>About</h3>
+      <a href="#"><img src="{{ asset('images/logo-2.png')}}" alt=""/></a>
+      
+    </div>
+    <div class="col-md-3 f_grid1 f_grid2">
+      <h3>Follow Us</h3>
+      <ul class="social">
+        <li><a href=""> <i class="fb"> </i><p class="m_3">Facebook</p><div class="clearfix"> </div></a></li>
+          <li><a href=""><i class="tw"> </i><p class="m_3">Twittter</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="google"> </i><p class="m_3">Google</p><div class="clearfix"> </div></a></li>
+        <li><a href=""><i class="instagram"> </i><p class="m_3">Instagram</p><div class="clearfix"> </div></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 f_grid3 f_grid2">
+      <h3>Contact Info</h3>
+      <ul class="list">
+        <li><p>Phone : {{ telephone }}</p></li>
+        <li><p>Fax : {{ adresse }}</p></li>
+        <li><p>Email : <a href="mailto:electrohl.shop@gmail.com"> {{ email }}</a></p></li>
+      </ul>
+      <ul class="list1">
+        <li></li>
+      </ul>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<div class="footer_bottom">
+        <div class="container">
+          <div class="cssmenu">
+      
+      </div>
+      <div class="copy">
+          <p> 2017 Creer par <a href="" target="_blank">Hibatou Allah & Laila </a></p>
+        </div>
+        <div class="clearfix"> </div>
+        </div>
+</div>
+
+
+
+{% endblock %}
